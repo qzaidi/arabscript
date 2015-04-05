@@ -76,10 +76,10 @@ map[arabic_alphabet.SMALL_LOW_MEEM] =  '';
 
 function unicode_to_phonetic(text) {
   var arabic_text = new ArabicText(text);
-  var i;
+  var i,len;
   var res = '';
 
-  for (i = 0; i < text.length; i++) {
+  for (i = 0, len = text.length; i < len; i++) {
     var position = i;
     // Whitespace
     if (arabic_text.is_whitespace(position)) {
@@ -103,7 +103,11 @@ function unicode_to_phonetic(text) {
 
     // Handle al
     if (arabic_text.is_al(position) && arabic_text.is_word_start(position)) {
-      res += 'al-';
+      if ((position < len-2) && arabic_text.is_solar(position+2)) {
+        res += 'a' + map[arabic_text.text[position+2]] + '-';
+      } else {
+        res += 'al-';
+      }
       i++; // skip the next letter because its already processed.
       continue;
     }

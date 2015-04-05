@@ -2,6 +2,19 @@
 
 var arabic_alphabet = require('./arabic_alphabet');
 
+var solar = [ 
+              arabic_alphabet.TA, arabic_alphabet.RA, arabic_alphabet.THA, 
+              arabic_alphabet.DAL, arabic_alphabet.THAL, arabic_alphabet.RA, arabic_alphabet.ZAY,
+              arabic_alphabet.SEEN, arabic_alphabet.SHEEN, arabic_alphabet.SAD, arabic_alphabet.DAD,
+              arabic_alphabet.TAH, arabic_alphabet.ZAH, arabic_alphabet.LAM, arabic_alphabet.NOON
+            ];
+
+var lunar = [ 
+              arabic_alphabet.BA, arabic_alphabet.JEEM, arabic_alphabet.HHA, arabic_alphabet.KHA,
+              arabic_alphabet.AIN, arabic_alphabet.GHAIN, arabic_alphabet.FA, arabic_alphabet.QAF,
+              arabic_alphabet.KAF, arabic_alphabet.MEEM, arabic_alphabet.WAW, arabic_alphabet.YA
+            ];
+
 function ArabicText(str) {
   this.text = str;
 }
@@ -22,6 +35,14 @@ ArabicText.prototype.is_hamza = function(position) {
 
 ArabicText.prototype.is_ta_marbuta = function(position) {
   return this.text[position] == arabic_alphabet.TA_MARBUTA;
+};
+
+ArabicText.prototype.is_solar = function(position) {
+  return solar.indexOf(this.text[position]) > -1
+};
+
+ArabicText.prototype.is_lunar = function(position) {
+  return lunar.indexOf(this.text[position]) > -1
 };
 
 ArabicText.prototype.is_alif = function(position) {

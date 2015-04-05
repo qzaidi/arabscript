@@ -4,7 +4,7 @@
   "description": "Phonetic Arabic Transcription",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -R spec ./test/test.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,9 @@
   "license": "GPL",
   "bugs": {
     "url": "https://github.com/qzaidi/arabscript/issues"
+  },
+  "devDependencies" : {
+    "mocha": "*"
   },
   "homepage": "https://github.com/qzaidi/arabscript"
 }
